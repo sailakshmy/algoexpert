@@ -1,0 +1,27 @@
+function threeNumberSum(array, targetSum) {
+  // Write your code here.
+  const sortedArray = array.sort((a,b)=> a-b);
+  let startPointer = 0;
+  let leftPointer = startPointer+1;
+  let endPointer = sortedArray.length-1;
+  const resArray =[];
+  while(startPointer < sortedArray.length){
+    while(leftPointer < endPointer){
+    let sum = sortedArray[startPointer]+sortedArray[leftPointer]+ sortedArray[endPointer];
+    if(sum < targetSum)leftPointer++;
+    else if(sum > targetSum)endPointer--;
+    else {
+      resArray.push([sortedArray[startPointer],sortedArray[leftPointer],sortedArray[endPointer]]);
+      leftPointer++;
+      endPointer--
+    }
+  }
+  startPointer ++;
+  leftPointer = startPointer+1;
+  endPointer = sortedArray.length-1;
+  }
+  return resArray;
+}
+
+// Do not edit the line below.
+exports.threeNumberSum = threeNumberSum;
