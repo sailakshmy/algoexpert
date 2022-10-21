@@ -1,0 +1,31 @@
+function groupAnagrams(words) {
+  // Write your code here.
+  const sortedWords = [];
+  let anagrams = [];
+  const arrOfAnagrams = [];
+  const alreadyAdded = [];
+  for(let i=0; i<words.length; i++){
+    const sortedWord = words[i].split('').sort().join('');
+    sortedWords.push(sortedWord);
+  }
+  let start = 0;
+  while(start < sortedWords.length){
+    if(alreadyAdded.indexOf(sortedWords[start]) === -1){
+          let current = start+1;
+          anagrams.push(words[start]);
+          while(current < sortedWords.length){
+            if(sortedWords[start]===sortedWords[current])
+              anagrams.push(words[current]);
+            current++;
+      }
+      alreadyAdded.push(sortedWords[start]);
+    }
+    if(anagrams.length > 0)arrOfAnagrams.push(anagrams);
+    anagrams=[];
+    start++;
+    
+  }
+  return arrOfAnagrams;
+}
+// Do not edit the line below.
+exports.groupAnagrams = groupAnagrams;
