@@ -1,0 +1,26 @@
+function mergeSort(array) {
+  // Write your code here.
+  if(array.length < 2) return array;
+  const mid = Math.floor(array.length/2);
+  const leftArr = array.slice(0,mid);
+  const rightArr = array.slice(mid, array.length);
+  return mergeHelper(mergeSort(leftArr),mergeSort(rightArr));
+}
+const mergeHelper = (leftArr, rightArr) =>{
+  let leftIndex = 0, rightIndex=0;
+  let res = [];
+  while(leftIndex<leftArr.length && rightIndex<rightArr.length){
+    if(leftArr[leftIndex]>rightArr[rightIndex]){
+      res.push(rightArr[rightIndex]);
+      rightIndex++
+    }else{
+      res.push(leftArr[leftIndex]);
+      leftIndex++;
+    }
+  }
+  while(leftIndex<leftArr.length)res.push(leftArr[leftIndex++]);
+  while(rightIndex<rightArr.length)res.push(rightArr[rightIndex++]);
+  return res;
+}
+// Do not edit the line below.
+exports.mergeSort = mergeSort;
