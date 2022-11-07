@@ -1,0 +1,17 @@
+function numberOfWaysToMakeChange(n, denoms) {
+  // Write your code here.
+  let cache = new Map();
+  const rec = (i,val) =>{
+    if(val === n) return 1;
+    if(val > n) return 0;
+    if(i === denoms.length) return 0;
+    if(cache.has((`${i}-${val}`)))return cache.get((`${i}-${val}`));
+    let res = rec(i,val+denoms[i])+rec(i+1,val);
+    cache.set((`${i}-${val}`),res);
+    return cache.get((`${i}-${val}`));
+  }
+  return rec(0,0);
+}
+
+// Do not edit the line below.
+exports.numberOfWaysToMakeChange = numberOfWaysToMakeChange;
