@@ -1,0 +1,24 @@
+// This is an input class. Do not edit.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function validateBst(tree) {
+  // Write your code here.
+const isValid = (node,leftLimit, rightLimit)=>{
+        if(!node) return true;
+        if(!(leftLimit<=node.value && rightLimit > node.value)) return false;
+        return isValid(node.left,leftLimit,node.value) 
+        && isValid(node.right,node.value,rightLimit);
+        
+    }
+return isValid(tree,-Infinity, Infinity);
+}
+
+// Do not edit the line below.
+exports.BST = BST;
+exports.validateBst = validateBst;
