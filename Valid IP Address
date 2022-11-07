@@ -1,0 +1,23 @@
+function validIPAddresses(string) {
+  // Write your code here.
+let res = [];
+if(string.length>12) return res;
+const btk = (i, dots,currIP) =>{
+if(dots===4 && string.length===i){
+let lastIndex = currIP.length-1;
+res.push(currIP.substring(0,lastIndex));
+return;
+}
+if(dots>4) return;
+for(let j=i; j<Math.min(i+3,string.length); j++){
+if(parseInt(string.substring(i,j+1))<256 && (i===j || string[i]!=="0"))
+  btk(j+1,dots+1,currIP+string.substring(i,j+1)+".");
+}
+
+}
+btk(0,0,"");
+  return res;
+}
+
+// Do not edit the line below.
+exports.validIPAddresses = validIPAddresses;
