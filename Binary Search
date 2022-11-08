@@ -1,0 +1,17 @@
+function binarySearch(array, target) {
+  // Write your code here.
+let start = 0;
+let end = array.length-1;
+return binarySearchHelper(start, end, array, target);
+}
+const binarySearchHelper = (start, end, arr, target) => {
+if(start>end) return -1;
+let mid = Math.floor((start+end)/2);
+if(arr[mid] === target) return mid;
+if(arr[mid] > target) return binarySearchHelper(start, mid-1,arr, target);
+if(arr[mid] < target) return binarySearchHelper(mid+1, end, arr, target);
+
+}
+
+// Do not edit the line below.
+exports.binarySearch = binarySearch;
