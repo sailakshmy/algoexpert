@@ -1,0 +1,36 @@
+// This is an input class. Do not edit.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function binaryTreeDiameter(tree) {
+  // Write your code here.
+  return getTreeInfo(tree).diameter;
+}
+class TreeInfo {
+constructor(diameter,height){
+this.diameter = diameter;
+this.height = height;
+}
+}
+
+const getTreeInfo = (tree) =>{
+if(!tree) return new TreeInfo(0,0);
+const leftTreeInfo = getTreeInfo(tree.left);
+const rightTreeInfo = getTreeInfo(tree.right);
+
+const longestPath = leftTreeInfo.height+rightTreeInfo.height;
+const maxDiameter = Math.max(leftTreeInfo.diameter, rightTreeInfo.diameter);
+const currentDiameter = Math.max(longestPath, maxDiameter);
+const currentLongestPath = 1+Math.max(leftTreeInfo.height, rightTreeInfo.height);
+
+return new TreeInfo(currentDiameter, currentLongestPath);
+}
+
+// Do not edit the line below.
+exports.binaryTreeDiameter = binaryTreeDiameter;
+exports.BinaryTree = BinaryTree;
