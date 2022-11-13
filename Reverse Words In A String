@@ -1,0 +1,17 @@
+function reverseWordsInString(string) {
+  // Write your code here.
+let arr = string.split(" ");
+let start = 0;
+let end = arr.length-1;
+while(start<end){
+let temp = arr[start];
+arr[start]=arr[end];
+arr[end]=temp;
+start++;
+end--;
+}
+  return arr.join(" ");
+}
+
+// Do not edit the line below.
+exports.reverseWordsInString = reverseWordsInString;
