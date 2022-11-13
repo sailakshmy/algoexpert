@@ -1,0 +1,12 @@
+function twoNumberSum(array, targetSum) {
+  // Write your code here.
+const nums={}
+for(const num of array){
+let difference = targetSum-num;
+if(difference in nums)return [difference,num];
+else nums[num] = true;
+}
+return [];
+}
+// Do not edit the line below.
+exports.twoNumberSum = twoNumberSum;
