@@ -1,0 +1,31 @@
+// This is an input class. Do not edit.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function findKthLargestValueInBst(tree, k) {
+  // Write your code here.
+  let current = tree;
+  let nodeStack = [];
+let stack = [];
+while(current || nodeStack.length){
+while(current){
+nodeStack.push(current);
+current = current.left;
+}
+current = nodeStack.pop();
+if(current){
+stack.push(current.value);
+current = current.right;
+}
+}
+  return stack[stack.length-k];
+}
+
+// Do not edit the lines below.
+exports.BST = BST;
+exports.findKthLargestValueInBst = findKthLargestValueInBst;
