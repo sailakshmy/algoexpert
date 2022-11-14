@@ -1,0 +1,40 @@
+// This is an input class. Do not edit.
+class AncestralTree {
+  constructor(name) {
+    this.name = name;
+    this.ancestor = null;
+  }
+}
+
+function getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo) {
+  // Write your code here.
+  const descendantDepth = (descendant, ancestor) =>{
+    let depth = 0;
+    while(descendant){
+      depth++;
+      descendant = descendant.ancestor;
+    }
+    return depth;
+  }
+  const backtrackAncestor = (lowerDes, higherDes, diff) =>{
+    while(diff>0){
+      lowerDes =  lowerDes.ancestor;
+      diff--;
+    }
+    while(lowerDes !== higherDes){
+      lowerDes = lowerDes.ancestor;
+      higherDes = higherDes.ancestor;
+    }
+    return lowerDes;
+  }
+  let depthOne = descendantDepth(descendantOne,topAncestor);
+  let depthTwo = descendantDepth(descendantTwo,topAncestor);
+  if(depthOne>depthTwo)
+    return backtrackAncestor(descendantOne,descendantTwo,depthOne-depthTwo);
+  else
+    return backtrackAncestor(descendantTwo,descendantOne,depthTwo-depthOne);
+}
+
+// Do not edit the lines below.
+exports.AncestralTree = AncestralTree;
+exports.getYoungestCommonAncestor = getYoungestCommonAncestor;
