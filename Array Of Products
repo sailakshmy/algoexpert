@@ -1,0 +1,18 @@
+function arrayOfProducts(array) {
+  // Write your code here
+let productArray = new Array(array.length).fill(1);
+let prefix = 1;
+for(let i=0; i<array.length; i++){
+productArray[i] = prefix;
+prefix*=array[i];
+}
+let postFix = 1;
+for(let j= array.length-1; j>=0; j--){
+productArray[j]*=postFix;
+postFix*=array[j];
+}
+return productArray;
+}
+
+// Do not edit the line below.
+exports.arrayOfProducts = arrayOfProducts;
