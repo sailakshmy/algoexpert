@@ -1,0 +1,13 @@
+function isValidSubsequence(array, sequence) {
+  // Write your code here.
+let ap=0;
+let sp=0;
+while(ap<array.length && sp<sequence.length){
+if(array[ap] === sequence[sp]) sp++;
+ap++;
+}
+return sp === sequence.length;
+}
+
+// Do not edit the line below.
+exports.isValidSubsequence = isValidSubsequence;
