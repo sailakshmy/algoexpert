@@ -1,0 +1,35 @@
+function dijkstrasAlgorithm(start, edges) {
+  // Write your code here.
+const numOfVertices =  edges.length;
+const minDistances = new Array(numOfVertices).fill(Infinity);
+minDistances[start]=0;
+const visited = new Set();
+while(visited.size !== numOfVertices){
+const [vertex, currentMinDistance] = getVertexWithMinDistance(minDistances,visited);
+if(currentMinDistance === Infinity) break;
+visited.add(vertex);
+for(const edge of edges[vertex]){
+const [destination, distanceToDestination] = edge;
+if(visited.has(destination)) continue;
+const newPathDistance = currentMinDistance+distanceToDestination;
+const currentDestinationDistance = minDistances[destination];
+if(newPathDistance < currentDestinationDistance)
+minDistances[destination] = newPathDistance;
+}
+}
+return minDistances.map(x=> x=== Infinity? -1:x);
+}
+const getVertexWithMinDistance =(distances, visited) =>{
+let currentMinDistance = Infinity;
+let vertex = -1;
+for(const [vertexIndex, distance] of distances.entries()){
+if(visited.has(vertexIndex)) continue;
+if(distance <= currentMinDistance){
+vertex = vertexIndex;
+currentMinDistance = distance;
+}
+}
+return [vertex,currentMinDistance];
+}
+// Do not edit the line below.
+exports.dijkstrasAlgorithm = dijkstrasAlgorithm;
