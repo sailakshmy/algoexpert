@@ -1,0 +1,13 @@
+function kadanesAlgorithm(array) {
+  // Write your code here.
+let currentMax = -Infinity;
+let maxSoFar =  currentMax;
+for(const num of array){
+currentMax = Math.max(num,num+currentMax);
+maxSoFar = Math.max(currentMax,maxSoFar);
+}
+return maxSoFar;
+}
+
+// Do not edit the line below.
+exports.kadanesAlgorithm = kadanesAlgorithm;
